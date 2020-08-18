@@ -11,5 +11,4 @@ public class LetterDistributionRepresentation {
     private List<Character> letterBank;
     private List<Character> tradedLetters;
     private List<Character> playerLetters;
-
 }
