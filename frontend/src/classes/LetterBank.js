@@ -31,7 +31,6 @@ class LetterBank {
 
   getAllLetters() {
     let list = [];
-    console.log(this.letters.keys());
     for (let i of this.letters.keys()) {
       for (let j = 0; j < this.letters.get(i); ++j) {
         list.push(i);

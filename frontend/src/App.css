@@ -104,6 +104,7 @@ button:hover {
 }
 
 .btn-container {
+  align-items: flex-end;
   position: absolute;
-  right: 10%;
+  right: 20px;
 }

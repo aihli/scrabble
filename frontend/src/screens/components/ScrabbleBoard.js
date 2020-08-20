@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import ScrabbleHand from "./ScrabbleHand";
 
-const ScrabbleBoard = ({ character, setCharacter, board, setBoard }) => {
+const ScrabbleBoard = ({ character, setCharacter, board, setBoard, trade }) => {
   const [scrabbleBoard, setScrabbleBoard] = useState(null);
 
   const setUpBoard = (tempBoard) => {
@@ -31,8 +30,7 @@ const ScrabbleBoard = ({ character, setCharacter, board, setBoard }) => {
   };
 
   const handleChangeBoard = (i, j) => {
-    console.log(character);
-    if (character) {
+    if (!trade && character) {
       const tempBoard = [];
       for (let i = 0; i < 15; ++i) {
         const tempRow = [];
