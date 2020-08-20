@@ -2,7 +2,6 @@ package com.scrabble.services;
 
 import com.scrabble.constants.GlobalVariables;
 import com.scrabble.models.GameBoardRepresentation;
-import jdk.nashorn.internal.objects.Global;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,6 +11,7 @@ import java.util.Set;
 
 @Service
 public class AuthenticationService {
+
     public boolean verifyLettersAlignment(GameBoardRepresentation gameBoardRepresentation) {
         List<List<Character>> oldBoard = gameBoardRepresentation.getOldBoard();
         List<List<Character>> newBoard = gameBoardRepresentation.getNewBoard();
@@ -71,11 +71,11 @@ public class AuthenticationService {
 
     private String expandWordRow(GameBoardRepresentation gameBoardRepresentation, int i, int j) {
         int tempHi = i, tempLo = i;
-        while (tempHi < GlobalVariables.BOARD_SIZE && gameBoardRepresentation.getNewBoard().get(tempHi).get(j) != '\u0000') {
+        while (tempHi < GlobalVariables.BOARD_SIZE && gameBoardRepresentation.getNewBoard().get(tempHi).get(j) != null && gameBoardRepresentation.getNewBoard().get(tempHi).get(j) != '\u0000') {
             ++tempHi;
         }
         --tempHi;
-        while (tempLo >= 0 && gameBoardRepresentation.getNewBoard().get(tempLo).get(j) != '\u0000') {
+        while (tempLo >= 0 && gameBoardRepresentation.getNewBoard().get(tempLo).get(j) != null && gameBoardRepresentation.getNewBoard().get(tempLo).get(j) != '\u0000') {
             --tempLo;
         }
         ++tempLo;
@@ -92,11 +92,11 @@ public class AuthenticationService {
 
     private String expandWordColumn(GameBoardRepresentation gameBoardRepresentation, int i, int j) {
         int tempHi = j, tempLo = j;
-        while (tempHi < GlobalVariables.BOARD_SIZE && gameBoardRepresentation.getNewBoard().get(i).get(tempHi) != '\u0000') {
+        while (tempHi < GlobalVariables.BOARD_SIZE && gameBoardRepresentation.getNewBoard().get(i).get(tempHi) != null && gameBoardRepresentation.getNewBoard().get(i).get(tempHi) != '\u0000') {
             ++tempHi;
         }
         --tempHi;
-        while (tempLo >= 0 && gameBoardRepresentation.getNewBoard().get(i).get(tempLo) != '\u0000') {
+        while (tempLo >= 0 && gameBoardRepresentation.getNewBoard().get(i).get(tempLo) != null && gameBoardRepresentation.getNewBoard().get(i).get(tempLo) != '\u0000') {
             --tempLo;
         }
         ++tempLo;
