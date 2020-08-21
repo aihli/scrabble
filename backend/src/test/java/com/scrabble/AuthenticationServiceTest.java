@@ -3,6 +3,7 @@ package com.scrabble;
 import com.scrabble.constants.GlobalVariables;
 import com.scrabble.models.GameBoardRepresentation;
 import com.scrabble.services.AuthenticationService;
+import com.scrabble.services.DictionaryService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AuthenticationServiceTest {
     private AuthenticationService authenticationService;
+    private DictionaryService dictionaryService;
     private GameBoardRepresentation gameBoardRepresentation;
 
     public List<List<Character>> populateBoard() {
@@ -32,6 +34,7 @@ public class AuthenticationServiceTest {
     @BeforeEach
     public void setUpBoard() {
         this.authenticationService = new AuthenticationService();
+        this.dictionaryService = new DictionaryService();
         this.gameBoardRepresentation = new GameBoardRepresentation();
         this.gameBoardRepresentation.setOldBoard(populateBoard());
         this.gameBoardRepresentation.setNewBoard(populateBoard());
@@ -88,5 +91,15 @@ public class AuthenticationServiceTest {
         assertTrue(allWords.contains("AAA"));
         assertTrue(allWords.contains("AAAA"));
         assertEquals(3, allWords.size());
+    }
+
+    @Test
+    public void testVerifyOneWord() {
+        this.gameBoardRepresentation.getNewBoard().get(0).set(0, 'A');
+        this.gameBoardRepresentation.getNewBoard().get(0).set(1, 'B');
+        this.gameBoardRepresentation.getNewBoard().get(0).set(2, 'L');
+        this.gameBoardRepresentation.getNewBoard().get(0).set(3, 'E');
+        Set<String> allWords = authenticationService.getAllWords(gameBoardRepresentation);
+        assertTrue(dictionaryService.verifyAllWords(allWords));
     }
 }

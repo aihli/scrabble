@@ -30,11 +30,11 @@ public class AuthenticationService {
             return true;
         }
         int differenceX = newCharactersX.get(1) - newCharactersX.get(0), differenceY = newCharactersY.get(1) - newCharactersY.get(0);
-        if (!(differenceX == 0 && differenceY == 1) && !(differenceX == 1 && differenceY == 0)) {
+        if (differenceX != 0 && differenceY != 0) {
             return false;
         }
         for (int i = 2; i < newCharactersX.size(); ++i) {
-            if ((newCharactersX.get(i) - newCharactersX.get(i - 1) != differenceX) ||
+            if ((newCharactersX.get(i) - newCharactersX.get(i - 1) != differenceX) &&
             newCharactersY.get(i) - newCharactersY.get(i - 1) != differenceY) {
                 return false;
             }
