@@ -43,17 +43,6 @@ public class DictionaryService {
         } catch(Exception e) {
             return false;
         }
-//        RestTemplate restTemplate = new RestTemplate();
-//        String url = "https://wordsapiv1.p.rapidapi.com/words/" + str +"/definitions/?rapidapi-key=c80c1f735bmsh7438297f7054c98p11c0bdjsn85ad969e7e49";
-//        HttpHeaders httpHeaders = new HttpHeaders();
-//        httpHeaders.setContentType(MediaType.TEXT_PLAIN);
-//        HttpEntity<String> entity = new HttpEntity<>("", httpHeaders);
-//        restTemplate.getForObject(url, String.class, httpHeaders);
-//        ResponseEntity<String> map = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-//        return map != null;
-//        restTemplate.postForObject()
-//
-//        req.headers({ 	"x-rapidapi-host": "wordsapiv1.p.rapidapi.com", 	"x-rapidapi-key": "c80c1f735bmsh7438297f7054c98p11c0bdjsn85ad969e7e49", 	"useQueryString": true });
     }
 
 }
